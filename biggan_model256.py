@@ -80,5 +80,5 @@ def get_discriminator(shape,df_dim=64):
     n1=BatchNorm2d(decay=0.9,act=tf.nn.relu,gamma_init=gamma_init,name=None)(n1)
     nn=nn+n1;
     nn=tf.reduce_sum(nn,axis=[1,2])
-    nn=Dense(n_units=1,W_init=w_init,b_init=None)(nn)
+    nn=Dense(n_units=1,W_init=w_init,act=tf.identity)(nn)
     return tl.models.Model(inputs=ni,outputs=nn,name='discriminator')
